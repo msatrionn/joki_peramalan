@@ -22,7 +22,7 @@
                 <thead>
                     <th>no</th>
                     <th>id rekap</th>
-                    <th>id barang</th>
+                    <th>nama barang</th>
                     <th>tanggal rekap</th>
                     <th>jumlah perbulan</th>
                     <th>aksi</th>
@@ -33,7 +33,7 @@
                         <tr>
                             <td scope="row"><?= $i; ?></td>
                             <td><?= $row['id_rekap']; ?></td>
-                            <td><?= $row['id_barang']; ?></td>
+                            <td><?= $row['nama_barang']; ?></td>
                             <td><?= $row['tanggal_rekap']; ?></td>
                             <td><?= $row['jumlah_perbulan']; ?></td>
                             <td>

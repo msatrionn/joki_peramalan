@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>2021 &copy;</span>
         </div>
     </div>
 </footer>
@@ -29,7 +29,7 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Anda yakin mau Logout?.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="login.html">Logout</a>
@@ -39,17 +39,42 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="assets/js/jquery-3.4.1.min.js"></script>
-<script src="assets/vendor/jquery/jquery.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/js/jquery-3.4.1.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+
+<script>
+    $(document).ready(function() {
+        var dTable = $('#table_id').DataTable({
+            "dom": 'rt<"bottom"ip><"clear">',
+            scrollY: '50vh',
+        });
+        $('#myCustomSearchBox').keyup(function() {
+            dTable.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
+        })
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var dTables = $('#table_ramal').DataTable({
+            "dom": 'rt<"bottom"ip><"clear">',
+            scrollY: '18vh',
+        });
+        $('#myCustomSearchBox').keyup(function() {
+            dTables.search($(this).val()).draw(); // this  is for customized searchbox with datatable search feature.
+        })
+    });
+</script>
 
 <!-- Core plugin JavaScript-->
-<script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="assets/js/sb-admin-2.min.js"></script>
+<script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
-<script src="assets/js/script.js"></script>
+<script src="<?= base_url('assets/js/script.js') ?>"></script>
 </body>
 
 </html

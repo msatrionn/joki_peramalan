@@ -9,10 +9,14 @@ class Barang extends Controller
 {
     public function __construct()
     {
+        $this->session = session();
         $this->model = new M_barang;
     }
     public function index()
     {
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
 
         $data = [
             'judul' => 'Barang',
@@ -26,6 +30,10 @@ class Barang extends Controller
     }
     public function tambah()
     {
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+
         $data = [
             'id_barang' => $this->request->getPost('id_barang'),
             'kode_barang' => $this->request->getPost('kode_barang'),
@@ -39,8 +47,13 @@ class Barang extends Controller
             return redirect()->to(base_url('barang'));
         }
     }
-    public function hapus($id)
+    public function hapus()
     {
+
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
+        $id = $this->request->getPost('id_barang');
         $success = $this->model->hapus($id);
         if ($success) {
             session()->setFlashdata('message', 'Dihapus');
@@ -49,13 +62,18 @@ class Barang extends Controller
     }
     public function ubah()
     {
+        if (!$this->session->has('isLogin')) {
+            return redirect()->to('/auth/login');
+        }
         $id = $this->request->getPost('id_barang');
+
 
         $data = [
             'kode_barang' => $this->request->getPost('kode_barang'),
             'nama_barang' => $this->request->getPost('nama_barang'),
             'satuan' => $this->request->getPost('satuan')
         ];
+        // dd($id);
         //insert data
         $success = $this->model->ubah($data, $id);
         if ($success) {

@@ -1,0 +1,7 @@
+.pencarian {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 120px;
+    border-radius: 20px;
+    transition: all 0.4s;
+    color: #000;
+}
